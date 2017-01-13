@@ -3,16 +3,16 @@
 namespace Kingsland.MofParser.Tokens
 {
 
-    public sealed class IntegerLiteralToken : NumericLiteralToken
+    public sealed class RealLiteralToken : NumericLiteralToken
     {
 
-        internal IntegerLiteralToken(SourceExtent extent, long value)
+        internal RealLiteralToken(SourceExtent extent, decimal value)
             : base(extent)
         {
             this.Value = value;
         }
 
-        public long Value
+        public decimal Value
         {
             get;
             private set;

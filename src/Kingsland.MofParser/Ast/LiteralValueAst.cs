@@ -36,11 +36,17 @@ namespace Kingsland.MofParser.Ast
         /// </remarks>
         internal new static LiteralValueAst Parse(ParserStream stream)
         {
+            //Note: This is a good candidate for the strategy pattern
             var peek = stream.Peek();
 			if (peek is IntegerLiteralToken)
             {
                 // integerValue
                 return IntegerValueAst.Parse(stream);
+            }
+            else if (peek is RealLiteralToken)
+            {
+                // doubleValue
+                return RealValueAst.Parse(stream);
             }
             else if (peek is StringLiteralToken)
 			{
@@ -65,7 +71,8 @@ namespace Kingsland.MofParser.Ast
 
         internal static bool IsLiteralValueToken(Token token)
         {
-            return (token is IntegerLiteralToken) ||
+            //Note: This is an excellent candidate for the strategy pattern
+            return (token is NumericLiteralToken) ||
                    //(token is RealLiteralToken) ||
                    //(token is DateTimeLiteralToken) ||
                    (token is StringLiteralToken) ||
