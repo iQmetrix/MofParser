@@ -123,7 +123,7 @@ namespace Kingsland.MofParser.HtmlReport.Wrappers
                 case "MSFT_ScriptResource":
                     return new ScriptResourceWrapper(filename, computerName, instance);
                 default:
-                    throw new NotImplementedException();
+                    throw new NotSupportedException();
             }
         }
 
